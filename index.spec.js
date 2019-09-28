@@ -73,13 +73,12 @@ var singleObjDenormalized = {
       id: '3',
       type: 'filling',
       name: 'Chocolate Ice Cream',
-      brand: {id: '6', type: 'company', name: 'I Screaaaaaam!' }
+      brand: { id: '6', type: 'company', name: 'I Screaaaaaam!' }
     },
     { id: '4', type: 'filling' },
     { id: '5', type: 'filling' }
   ]
 };
-
 
 var list = {
   data: [
@@ -119,13 +118,11 @@ var list = {
           data: { id: '12', type: 'container' }
         },
         flavors: {
-          data: [
-            { id: '3', type: 'filling' },
-            { id: '5', type: 'filling' }
-          ]
+          data: [{ id: '3', type: 'filling' }, { id: '5', type: 'filling' }]
         }
       }
-    }],
+    }
+  ],
   included: [
     {
       id: '2',
@@ -191,7 +188,7 @@ var listDenormalized = [
     name: 'Double Dank',
     creamy: true,
     createdAt: now,
-    cone: {id: '12', type: 'container', name: 'Medium Cone' },
+    cone: { id: '12', type: 'container', name: 'Medium Cone' },
     flavors: [
       {
         id: '3',
@@ -204,15 +201,12 @@ var listDenormalized = [
   }
 ];
 
-
 describe('denormalize', function() {
-  it("denormalizes responses with a singular top-level object", function() {
-    expect(denormalize(singleObj))
-      .toEqual(singleObjDenormalized);
+  it('denormalizes responses with a singular top-level object', function() {
+    expect(denormalize(singleObj)).toEqual(singleObjDenormalized);
   });
 
-  it("denormalizes responses with multiple top-level objects", function() {
-    expect(denormalize(list))
-      .toEqual(listDenormalized);
+  it('denormalizes responses with multiple top-level objects', function() {
+    expect(denormalize(list)).toEqual(listDenormalized);
   });
 });

@@ -19,7 +19,9 @@
   "author": "Tony Gonçalves <tonyfg.pt@gmail.com> (https://github.com/tonyfg)",
   "license": "BSD-1-Clause",
   "private": false,
-  "files": ["index.js"],
+  "files": [
+    "index.js"
+  ],
   "scripts": {
     "lint": "eslint . --max-warnings 0",
     "lint-fix": "eslint . --max-warnings 0 --fix",

@@ -11,5 +11,10 @@
     "eslint:recommended",
     "plugin:es5/no-es2015",
     "prettier"
-  ]
+  ],
+  "rules": {
+    "no-console": "warn",
+    "no-debugger": "warn",
+    "no-unused-vars": ["warn", { "varsIgnorePattern": "^_", "argsIgnorePattern": "^_" }]
+  }
 }

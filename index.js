@@ -5,20 +5,16 @@ module.exports = function denormalize(obj) {
   var cache = {}; // Cache of already denormalized objects in "included"
   var included = extractIncluded(obj);
 
-  console.log("INCUDED SITE:", Object.keys(included).length);
-
   if (obj.data.length == null) {
     // There's a single top-level object
     return denormalizeObj(obj.data, included, cache);
-  }
-  else {
+  } else {
     // We are dealing with a list of objects
     return obj.data.map(function(o) {
       return denormalizeObj(o, included, cache);
     });
   }
-}
-
+};
 
 /**
  * Extracts all of the objects in the "included" key of the JSON:API response
@@ -36,7 +32,9 @@ module.exports = function denormalize(obj) {
 function extractIncluded(obj) {
   var included = {};
 
-  if (obj.included == null) { return included; }
+  if (obj.included == null) {
+    return included;
+  }
 
   for (var i = 0; i < obj.included.length; i++) {
     var o = obj.included[i];
@@ -50,7 +48,6 @@ function extractIncluded(obj) {
 
   return included;
 }
-
 
 function denormalizeObj(obj, included, cache) {
   var type = obj.type;
@@ -77,17 +74,15 @@ function denormalizeObj(obj, included, cache) {
   assign(newObj, obj.attributes);
 
   // Copy related objects to top-level of new object
-  assign(
-    newObj,
-    denormalizeRelationships(obj.relationships, included, cache)
-  );
+  assign(newObj, denormalizeRelationships(obj.relationships, included, cache));
 
   // Cache the denormalized object and return it
-  if (cache[type] == null) { cache[type] = {}; }
+  if (cache[type] == null) {
+    cache[type] = {};
+  }
   cache[type][newObj.id] = newObj;
   return newObj;
 }
-
 
 function denormalizeRelationships(relationships, included, cache) {
   var newRelationships = {};
@@ -95,11 +90,12 @@ function denormalizeRelationships(relationships, included, cache) {
   for (var k in relationships) {
     var rel = relationships[k].data;
 
-    if (rel.length == null) { // relationship is a signle object
+    if (rel.length == null) {
+      // relationship is a signle object
       var obj = isIncluded(rel, included) ? included[rel.type][rel.id] : rel;
       newRelationships[k] = denormalizeObj(obj, included, cache);
-    }
-    else { // relationship is an array of objects
+    } else {
+      // relationship is an array of objects
       newRelationships[k] = rel.map(function(o) {
         o = isIncluded(o, included) ? included[o.type][o.id] : o;
         return denormalizeObj(o, included, cache);
@@ -110,15 +106,17 @@ function denormalizeRelationships(relationships, included, cache) {
   return newRelationships;
 }
 
-
 function isIncluded(obj, included) {
   return included[obj.type] != null && included[obj.type][obj.id] != null;
 }
 
-
 /**
  * Replacement for Object.assign when running in ES5 environments
  */
-var assign = Object.assign || function(target, source) {
-  for (var k in source) { target[k] = source[k]; }
-}
+var assign =
+  Object.assign ||
+  function(target, source) {
+    for (var k in source) {
+      target[k] = source[k];
+    }
+  };
