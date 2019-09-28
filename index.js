@@ -2,6 +2,10 @@
  * See LICENSE.txt for licensing details */
 
 module.exports = function denormalize(obj) {
+  if (obj == null || obj.data == null) {
+    return { data: null };
+  }
+
   var cache = {}; // Cache of already denormalized objects in "included"
   var included = extractIncluded(obj);
 

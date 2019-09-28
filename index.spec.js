@@ -209,4 +209,12 @@ describe('denormalize', function() {
   it('denormalizes responses with multiple top-level objects', function() {
     expect(denormalize(list)).toEqual(listDenormalized);
   });
+
+  it('returns empty data when called with a null argument', function() {
+    expect(denormalize()).toEqual({ data: null });
+  });
+
+  it("returns empty data when the data key doesn't exist", function() {
+    expect(denormalize({ yo: 'dude' })).toEqual({ data: null });
+  });
 });
