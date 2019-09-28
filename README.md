@@ -1,4 +1,4 @@
-# denormalize_json_api
+# denormalize_json_api [![Build Status](https://travis-ci.org/tonyfg/denormalize_json_api.svg?branch=master)](https://travis-ci.org/tonyfg/denormalize_json_api)
 
 ## What is this?
 
