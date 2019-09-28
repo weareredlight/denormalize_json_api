@@ -1,0 +1,52 @@
+{
+  "name": "denormalize_json_api",
+  "version": "0.1.0",
+  "description": "Denormalize JSON API responses so the shape of returned objects is easier to access",
+  "keywords": [
+    "jsonapi",
+    "json:api",
+    "json",
+    "api",
+    "normalize",
+    "denormalize",
+    "normalizer",
+    "denormalizer"
+  ],
+  "main": "index.js",
+  "repository": "github:tonyfg/denormalize_json_api",
+  "homepage": "https://github.com/tonyfg/denormalize_json_api",
+  "bugs": "https://github.com/tonyfg/denormalize_json_api/issues",
+  "author": "Tony Gonçalves <tonyfg.pt@gmail.com> (https://github.com/tonyfg)",
+  "license": "BSD-1-Clause",
+  "private": false,
+  "files": ["index.js"],
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "lint-fix": "eslint . --max-warnings 0 --fix",
+    "pretty": "prettier -c ./*.js ./**/*.js",
+    "pretty-fix": "prettier --write ./*.js ./**/*.js",
+    "test": "jest"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "yarn lint-fix",
+      "yarn pretty-fix",
+      "git add"
+    ]
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^6.4.0",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-es5": "^1.4.1",
+    "husky": "^3.0.7",
+    "jest": "^24.9.0",
+    "lint-staged": "^9.4.0",
+    "prettier": "^1.18.2"
+  }
+}
