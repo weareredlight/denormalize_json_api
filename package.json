@@ -1,5 +1,5 @@
 {
-  "name": "denormalize_json_api",
+  "name": "@tonyfg/denormalize_json_api",
   "version": "0.1.0",
   "description": "Denormalize JSON API responses so the shape of returned objects is easier to access",
   "keywords": [
