@@ -18,7 +18,7 @@ Let's imagine a JSON:API server response that looks like this:
       id: '1',
       name: 'Double Trouble',
       creamy: true,
-      createdAt: now
+      createdAt: '2019-09-29T12:42:37+01:00'
     },
     relationships: {
       cone: {
@@ -66,7 +66,7 @@ After calling `denormalize` on that you would get:
   type: 'iceCream',
   name: 'Double Trouble',
   creamy: true,
-  createdAt: now,
+  createdAt: '2019-09-29T12:42:37+01:00',
   cone: { id: '2', type: 'container', name: 'Big Cone' },
   flavors: [
     {
