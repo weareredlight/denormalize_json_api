@@ -1,23 +1,33 @@
-/* Copyright (c) <2019> <Tony Gonçalves> All rights reserved.
+/* Copyright (c) 2019 Tony Gonçalves. All rights reserved.
  * See LICENSE.txt for licensing details */
 
 module.exports = function denormalize(obj) {
-  if (obj == null || obj.data == null) {
-    return { data: null };
+  if (!obj || !obj.data || obj.errors) {
+    return obj;
   }
 
+  var denormalizedData;
   var cache = {}; // Cache of already denormalized objects in "included"
   var included = extractIncluded(obj);
 
   if (obj.data.length == null) {
     // There's a single top-level object
-    return denormalizeObj(obj.data, included, cache);
+    denormalizedData = denormalizeObj(obj.data, included, cache);
   } else {
     // We are dealing with a list of objects
-    return obj.data.map(function(o) {
+    denormalizedData = obj.data.map(function(o) {
       return denormalizeObj(o, included, cache);
     });
   }
+
+  var returnObj = { data: denormalizedData };
+  if (obj.meta) {
+    returnObj.meta = obj.meta;
+  }
+  if (obj.links) {
+    returnObj.links = obj.links;
+  }
+  return returnObj;
 };
 
 /**

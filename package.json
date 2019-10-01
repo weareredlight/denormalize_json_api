@@ -1,6 +1,6 @@
 {
   "name": "@weareredlight/denormalize_json_api",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Denormalize JSON API responses so the shape of returned objects is easier to access",
   "keywords": [
     "jsonapi",
@@ -13,11 +13,11 @@
     "denormalizer"
   ],
   "main": "index.js",
-  "repository": "github:tonyfg/denormalize_json_api",
-  "homepage": "https://github.com/tonyfg/denormalize_json_api",
-  "bugs": "https://github.com/tonyfg/denormalize_json_api/issues",
+  "repository": "github:weareredlight/denormalize_json_api",
+  "homepage": "https://github.com/weareredlight/denormalize_json_api",
+  "bugs": "https://github.com/weareredlight/denormalize_json_api/issues",
   "author": "Tony Gonçalves <tonyfg.pt@gmail.com> (https://github.com/tonyfg)",
-  "license": "BSD-1-Clause",
+  "license": "MIT",
   "private": false,
   "files": [
     "index.js"
