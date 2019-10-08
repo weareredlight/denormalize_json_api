@@ -104,8 +104,11 @@ function denormalizeRelationships(relationships, included, cache) {
   for (var k in relationships) {
     var rel = relationships[k].data;
 
-    if (rel.length == null) {
-      // relationship is a signle object
+    if (rel == null) {
+      // relationship is null
+      newRelationships[k] = null;
+    } else if (rel.length == null) {
+      // relationship is a single object
       var obj = isIncluded(rel, included) ? included[rel.type][rel.id] : rel;
       newRelationships[k] = denormalizeObj(obj, included, cache);
     } else {
