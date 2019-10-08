@@ -1,6 +1,6 @@
 {
   "name": "@weareredlight/denormalize_json_api",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Denormalize JSON API responses so the shape of returned objects is easier to access",
   "keywords": [
     "jsonapi",
