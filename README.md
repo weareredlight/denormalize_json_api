@@ -88,11 +88,11 @@ After calling `denormalize` on that you would get:
 Install from the NPM repository using yarn or npm:
 
 ```shell
-yarn add denormalize_json_api
+yarn add @weareredlight/denormalize_json_api
 ```
 
 ```shell
-npm install denormalize_json_api
+npm install @weareredlight/denormalize_json_api
 ```
 
 Require it in your code and call it on a JSON:API response (you need to parse it into javascript first!):
